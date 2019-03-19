@@ -209,6 +209,7 @@ struct  pernfsmount {
 
 struct nfsstat {
 	struct {
+            int present;
         	count_t	netcnt;
 		count_t netudpcnt;
 		count_t nettcpcnt;
@@ -233,6 +234,7 @@ struct nfsstat {
 	} server;
 
 	struct {
+        int present;
 		count_t	rpccnt;
 		count_t rpcretrans;
 		count_t rpcautrefresh;

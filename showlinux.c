@@ -2021,7 +2021,7 @@ prisyst(struct sstat *sstat, int curline, int nsecs, int avgval,
 		}
 	}
 
-        if (sstat->nfs.client.rpccnt || fixedhead )
+        if (sstat->nfs.client.present && (sstat->nfs.client.rpccnt || fixedhead))
         {
 		if (screen)
                 	move(curline, 0);
@@ -2030,7 +2030,7 @@ prisyst(struct sstat *sstat, int curline, int nsecs, int avgval,
                 curline++;
         }
 
-        if (sstat->nfs.server.rpccnt || fixedhead )
+        if (sstat->nfs.server.present && (sstat->nfs.server.rpccnt || fixedhead))
         {
 		if (screen)
                 	move(curline, 0);

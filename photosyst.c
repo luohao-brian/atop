@@ -1068,6 +1068,9 @@ photosyst(struct sstat *si)
 		char    label[32];
 		count_t	cnt[40];
 
+        /* Enable nfs server stats in header */
+        si->nfs.server.present = 1;
+
 		/*
 		** every line starts with a small label,
 		** followed by upto 60 counters
@@ -1159,7 +1162,9 @@ photosyst(struct sstat *si)
 		}
 
 		fclose(fp);
-	}
+	} else {
+        si->nfs.server.present = 0;
+    }
 
 	/*
 	** NFS client statistics
@@ -1169,6 +1174,8 @@ photosyst(struct sstat *si)
 		char    label[32];
 		count_t	cnt[10];
 
+        /* Enable nfs client stats in header */
+        si->nfs.client.present = 1;
 		/*
 		** every line starts with a small label,
 		** followed by counters
@@ -1218,7 +1225,9 @@ photosyst(struct sstat *si)
 		}
 
 		fclose(fp);
-	}
+	} else {
+        si->nfs.client.present = 0;
+    }
 
 	/*
 	** NFS client: per-mount statistics
